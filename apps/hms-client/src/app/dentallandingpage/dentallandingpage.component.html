@@ -1,0 +1,509 @@
+<section class="hero-section">
+    <article class="hero-content">
+      <header class="hero-header">
+        <h1 class="hero-title">
+          We Provide High Quality
+          Dental Services
+        </h1>
+        <p class="hero-description">
+          Appropriately embrace transparent materials via turnkey niche
+          markets.
+        </p>
+      </header>
+      <nav class="action-buttons">
+        <button class="primary-button" tabindex="0">Get Started</button>
+        <button class="secondary-button" tabindex="0">Learn More</button>
+      </nav>
+    </article>
+    <img
+      loading="lazy"
+      src="https://cdn.builder.io/api/v1/image/assets/TEMP/de7b41eacc15d28e69b1665d4da2ef12cb1e7df380cae7125008eae5da8b4699?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+      class="hero-image"
+      alt="High quality dental services illustration"
+    />
+</section>
+
+<section class="service-section">
+    <div class="service-content">
+      <header class="service-header">
+        <h2 class="service-title">How to get our service?</h2>
+        <p class="service-subtitle">Just follow these simple steps</p>
+      </header>
+      <div class="steps-container">
+        <article 
+          *ngFor="let step of serviceSteps" 
+          class="step-card"
+          tabindex="0"
+          role="article"
+        >
+          <img
+            [src]="step.imageSrc"
+            [alt]="step.imageAlt"
+            class="step-icon"
+            loading="lazy"
+          />
+          <h3 class="step-title">{{step.title}}</h3>
+        </article>
+      </div>
+    </div>
+</section>
+
+<section class="hero-section">
+    <header class="header-container">
+        <section class="header-content">
+            Always
+            <span class="highlight-text">Laugh</span>
+            Whenever Its Possible
+        </section>
+        <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/60eda0a0a6d07497824318c11bf60ea1c747bb5f84ba29b6f1cb8d40d2ccb048?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+            class="header-image"
+            alt="Illustration representing laughter and joy"
+        />
+    </header>
+
+    <section class="services-section">
+        <p class="services-description">
+            We also offer treatments that improve the appearance of your smile
+            giving you the confidence boost you deserve. The process or our
+            treatment below.
+        </p>
+        <article class="services-container">
+            <h2 class="services-title">WHAT WE PROVIDE</h2>
+            <div class="services-grid">
+                <div class="services-column">
+                    <div class="service-item" tabindex="0">
+                        <img
+                            loading="lazy"
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3a665943b9c7101faafe05da34c41403f0c229ade6d454a85ecd0f1e156fe6e3?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+                            alt="Check ups service icon"
+                            class="service-icon"
+                        />
+                        <h3 class="service-name">Check ups</h3>
+                    </div>
+                    <div class="service-item" tabindex="0">
+                        <img
+                            loading="lazy"
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3a665943b9c7101faafe05da34c41403f0c229ade6d454a85ecd0f1e156fe6e3?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+                            alt="Cosmetic dentistry service icon"
+                            class="service-icon"
+                        />
+                        <h3 class="service-name">Cosmetic dentistry</h3>
+                    </div>
+                    <div class="service-item" tabindex="0">
+                        <img
+                            loading="lazy"
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3a665943b9c7101faafe05da34c41403f0c229ade6d454a85ecd0f1e156fe6e3?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+                            alt="Orthodontics service icon"
+                            class="service-icon"
+                        />
+                        <h3 class="service-name">Orthodontics</h3>
+                    </div>
+                    <div class="service-item" tabindex="0">
+                        <img
+                            loading="lazy"
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3a665943b9c7101faafe05da34c41403f0c229ade6d454a85ecd0f1e156fe6e3?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+                            alt="Preventative checks service icon"
+                            class="service-icon"
+                        />
+                        <h3 class="service-name">Preventative checks</h3>
+                    </div>
+                </div>
+                <div class="services-column">
+                    <div class="service-item" tabindex="0">
+                        <img
+                            loading="lazy"
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/a5f431edc017b4d913707fb7713b2e9ce3d1a47c9ab7b93541cba5712b45c985?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+                            alt="Emergency dental service icon"
+                            class="service-icon"
+                        />
+                        <h3 class="service-name">Emergencies</h3>
+                    </div>
+                    <div class="service-item" tabindex="0">
+                        <img
+                            loading="lazy"
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/a5f431edc017b4d913707fb7713b2e9ce3d1a47c9ab7b93541cba5712b45c985?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+                            alt="Dental implants service icon"
+                            class="service-icon"
+                        />
+                        <h3 class="service-name">Dental implants</h3>
+                    </div>
+                    <div class="service-item" tabindex="0">
+                        <img
+                            loading="lazy"
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/a5f431edc017b4d913707fb7713b2e9ce3d1a47c9ab7b93541cba5712b45c985?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+                            alt="Children's dentistry service icon"
+                            class="service-icon"
+                        />
+                        <h3 class="service-name">Children's dentistry</h3>
+                    </div>
+                    <div class="service-item" tabindex="0">
+                        <img
+                            loading="lazy"
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/a5f431edc017b4d913707fb7713b2e9ce3d1a47c9ab7b93541cba5712b45c985?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+                            alt="Telephone consultations service icon"
+                            class="service-icon"
+                        />
+                        <h3 class="service-name">Telephone consultations</h3>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+</section>
+
+<section class="features-section">
+    <header class="features-header">      
+      <h1 class="main-title">
+        <span class="title-prefix">What Makes Us More</span>
+        <span class="title-emphasis">Special</span>
+      </h1>
+      <div class="feature-header-content">
+        <h2 class="section-title">
+          KEY
+          <span class="highlight">FEATURE</span>
+        </h2>
+        <div class="divider">
+          <span class="divider-line"></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="features-container">
+      <div class="features-grid">
+        <div class="features-row">
+          <article *ngFor="let feature of topFeatures" class="feature-card">
+            <img [src]="feature.imgSrc" [alt]="feature.imgAlt" class="feature-icon" loading="lazy"/>
+            <div class="feature-content">
+              <h3 class="feature-title">{{ feature.title }}</h3>
+              <p class="feature-description">{{ feature.description }}</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="features-row">
+          <article *ngFor="let feature of bottomFeatures" class="feature-card">
+            <img [src]="feature.imgSrc" [alt]="feature.imgAlt" class="feature-icon" loading="lazy"/>
+            <div class="feature-content">
+              <h3 class="feature-title">{{ feature.title }}</h3>
+              <p class="feature-description">{{ feature.description }}</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- <div class="background-decoration">
+        <div class="horizontal-line"></div>
+        <div class="vertical-lines">
+          <span class="vertical-line"></span>
+          <span class="vertical-line"></span>
+        </div>
+      </div> -->
+    </main>
+</section>
+
+<section class="hero-section2">
+    <article class="hero-content">
+      <header class="hero-header">
+        <h1 class="hero-title2">
+          <span class="hero-title-light">Let Us Brighten</span>
+          <span class="hero-title-bold">Your Smile!</span>
+        </h1>
+      </header>
+      <p class="hero-description2">
+        Helping patients achieve good dental health & beautiful smile is a
+        privilege & responsibility. For over 30 years, we proudly provided the
+        best dental experience in New York. Our comfort-first approach is
+        designed to meet the needs of you & your entire family.
+      </p>
+    </article>
+    <button class="appointment-button" tabindex="0" aria-label="Make An Appointment">
+      Make An Appointment
+    </button>
+</section>
+
+<section class="who-we-are-section">
+    <header class="section-header">
+      <div class="title-container">
+        <h1 class="main-title">
+          <span class="title-dark">WHO</span>
+          WE ARE
+        </h1>
+        <div class="divider-container">
+          <hr class="divider-line" />
+        </div>
+      </div>
+      <h2 class="subtitle">
+        <span class="subtitle-dark">Our Glorious</span>
+        <br />
+        <span class="subtitle-emphasis">History</span>
+      </h2>
+    </header>
+    <main class="main-content">
+      <img
+        loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/5369a22dde619f4163b6daa3e1905cb9f4976eafb92c3213bb7e1aeeb5977be1?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+        alt="Dentics dental clinic history representation"
+        class="history-image"
+      />
+      <article class="history-content">
+        <h3 class="history-title">Our history</h3>
+        <p class="history-description">
+          Dentics is a well-known name in dental and oral care in New York.
+          The journey of this institution started in 1990 under the hands of
+          Dr. Jonathon Doe, Gold Medalist of Harvard University. Dentics
+          dental center has been leading the way in dental treatment in USA
+          for more than 30 years in keeping with the evolution of time and the
+          modernization of the era.
+        </p>
+      </article>
+    </main>
+</section>
+
+<section class="team-section">
+    <header class="section-header">
+        <div class="title-container">
+          <h1 class="main-title">
+            <span class="subtitle">Meet Some of Our</span>
+            <span class="highlight-title">Brains</span>
+          </h1>
+          <div class="divider-container">
+            <hr class="divider-line" />
+          </div>
+        </div>
+        <h2 class="subtitle">
+            MEET OUR
+            <span class="highlight-text">DOCTORS</span>
+        </h2>
+    </header>
+
+    <main class="team-content">
+      <button class="nav-button nav-prev" aria-label="Previous doctors">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/44a76913d727b8687bfcfe6f5f2cacfedfe26c5cca68135ccc91a6e43cdf6acd?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+          alt="Previous"
+          class="nav-icon"
+          loading="lazy"
+        />
+      </button>
+
+      <section class="doctors-grid">
+        <article class="doctor-card" *ngFor="let doctor of doctors">
+          <img
+            [src]="doctor.imageUrl"
+            [alt]="'Portrait of ' + doctor.name"
+            class="doctor-image"
+            loading="lazy"
+          />
+          <div class="doctor-info">
+            <div class="doctor-details">
+              <h3 class="doctor-name">{{ doctor.name }}</h3>
+              <div class="doctor-credentials">
+                <p>{{ doctor.specialty }}</p>
+                <p>{{ doctor.school }}</p>
+              </div>
+            </div>
+            <button class="appointment-button" tabindex="0">
+              Appointment
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <button class="nav-button nav-next" aria-label="Next doctors">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/d167d4561056965b7b65b9c22fc5d3f9f6e521b316ced475815ab7e67f96ede0?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+          alt="Next"
+          class="nav-icon"
+          loading="lazy"
+        />
+      </button>
+    </main>
+</section>
+
+<main class="appointment-container">
+    <header class="appointment-header">
+      <section class="appt-header-content">
+        <h1 class="title">
+          MAKE AN
+          <span class="highlight-text">APPOINTMENT</span>
+        </h1>
+        <div class="divider"></div>
+      </section>
+      <section class="subtitle-container">
+        <h2 class="subtitle">
+          Consult with our
+          <span class="subtitle-emphasis">Doctor</span>
+        </h2>
+      </section>
+    </header>
+
+    <section class="appointment-content">
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/29c6a9635bf1981115484f9b1ae2ef0f906eefc727ed8f23a26bbfc7317b04fa?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+        alt="Doctor consultation illustration"
+        class="doctor-image"
+      />
+
+      <form [formGroup]="appointmentForm" class="appointment-form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName" class="form-label">Name</label>
+            <input
+              id="fullName"
+              type="text"
+              formControlName="fullName"
+              class="form-input"
+              placeholder="Full name"
+              aria-label="Full name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone</label>
+            <div class="phone-input-container">
+              <div class="country-code">
+                <span class="code-text">+01</span>
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/44d76ba14bcc6ce1f2832718fb61ec13e471ed7385896a2c6006df522433871d?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+                  alt=""
+                  class="dropdown-icon"
+                />
+              </div>
+              <input
+                id="phone"
+                type="tel"
+                formControlName="phone"
+                class="form-input"
+                placeholder="(555) 000-0000"
+                aria-label="Phone number"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date" class="form-label">Date</label>
+            <div class="date-input-container">
+              <input
+                id="date"
+                type="date"
+                formControlName="date"
+                class="form-input"
+                aria-label="Appointment date"
+              />
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/6054dc78880237f703d711c9bee9440963d15cfe1e32d1872f6880436e6bdd66?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+                alt=""
+                class="calendar-icon"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="doctor" class="form-label">Doctor</label>
+            <div class="doctor-select-container">
+              <select
+                id="doctor"
+                formControlName="doctor"
+                class="form-input"
+                aria-label="Select doctor"
+              >
+                <option value="Dr. Pritis Barua">Dr. Pritis Barua</option>
+              </select>
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/efc12b64d194857a3340bbe2a42f80d4beb5e00e39a00d0744fa356ef8dfe32d?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+                alt=""
+                class="dropdown-icon"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="form-label">Message</label>
+          <textarea
+            id="message"
+            formControlName="message"
+            class="form-textarea"
+            placeholder="Include a message..."
+            aria-label="Message"
+          ></textarea>
+        </div>
+
+        <div class="form-footer">
+          <div class="privacy-section">
+            <input
+              type="checkbox"
+              id="privacyPolicy"
+              formControlName="privacyAccepted"
+              class="privacy-checkbox"
+              aria-label="Accept privacy policy"
+            />
+            <label for="privacyPolicy" class="privacy-label">
+              You agree to our friendly
+              <span class="privacy-link">privacy policy.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="submit-button">
+            Confirm Appointment
+          </button>
+        </div>
+      </form>
+    </section>
+</main>
+
+<section class="newsletter-section">
+    <article class="newsletter-container">
+      <figure class="left-illustration">
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/a4d122f0800063cf92eed24ef7c5b2faaaa49872b8c7ec60161bf929ff5bb718?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+          alt="Newsletter subscription decorative left illustration"
+          class="left-image"
+        />
+      </figure>
+      
+      <form [formGroup]="subscribeForm" (ngSubmit)="onSubmit()" class="subscription-form">
+        <h2 class="form-title">Subscribe to our newsletter</h2>
+        <div class="form-inputs">
+          <div class="input-group">
+            <label for="firstName" class="visually-hidden">First name</label>
+            <input
+              id="firstName"
+              type="text"
+              formControlName="firstName"
+              class="form-input"
+              placeholder="First name"
+              aria-label="First name"
+            />
+            
+            <label for="email" class="visually-hidden">Email address</label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              class="form-input"
+              placeholder="Email address"
+              aria-label="Email address"
+            />
+          </div>
+          <button type="submit" class="submit-button" aria-label="Subscribe to newsletter">
+            Subscribe Now
+          </button>
+        </div>
+      </form>
+
+      <figure class="right-illustration">
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/a769a686ea9b163df56f4d4981083b28fcd92a31709669b0edba9a21ac91348f?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
+          alt="Newsletter subscription decorative right illustration"
+          class="right-image"
+        />
+      </figure>
+    </article>
+</section>

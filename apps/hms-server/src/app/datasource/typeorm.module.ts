@@ -31,8 +31,6 @@ import { Auth } from '../auth/entities/auth.entity';
           console.log('Database connected successfully');
           return dataSource;
         } catch (error) {
-          console.log('Error connecting to database');
-          console.log('Error connecting to databas55454e', error);
           throw error;
         }
       },

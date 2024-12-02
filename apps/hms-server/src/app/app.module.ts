@@ -8,8 +8,9 @@ import { AppointmentsModule } from './appointments/appointments.module';
 import { BillsModule } from './bills/bills.module';
 import { TypeormModule } from './datasource/typeorm.module';
 import { AuthModule } from './auth/auth.module';
+
 @Module({
-  imports: [ 
+  imports: [
     TypeormModule,
     LoggerModule.forRoot({
       pinoHttp: {

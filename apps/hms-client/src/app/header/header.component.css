@@ -1,0 +1,105 @@
+:host {
+    display: contents;
+  }
+  .header-container {
+    padding: 40px 108px 0;
+  }
+  .navigation-wrapper {
+    padding: 0 0 24px;
+    align-items: center;
+    border-bottom: 1px solid #bcbcbc;
+    display: flex;
+    gap: 40px 459px;
+    flex-wrap: wrap;
+  }
+  .brand-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #18181b;
+    width: 217px;
+    margin: auto 0;
+    font: 500 42px/1 Ubuntu, sans-serif;
+  }
+  .brand-logo {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 48px;
+    align-self: stretch;
+    margin: auto 0;
+  }
+  .brand-name {
+    align-self: stretch;
+    width: 153px;
+    margin: auto 0;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  .navigation-content {
+    align-self: stretch;
+    display: flex;
+    min-width: 240px;
+    align-items: center;
+    gap: 40px 64px;
+    font-family: Inter, sans-serif;
+    flex-wrap: wrap;
+    margin: auto 0;
+  }
+  .nav-links {
+    align-self: stretch;
+    display: flex;
+    min-width: 240px;
+    align-items: start;
+    gap: 40px;
+    font-size: 16px;
+    color: #52525b;
+    margin: auto 0;
+  }
+  .nav-link {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 400;
+    transition: color 0.3s ease;
+  }
+  .nav-link:hover, .nav-link:focus {
+    color: #516eff;
+  }
+  .nav-link.active {
+    color: #516eff;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .appointment-button {
+    border: none;
+    border-radius: 8px;
+    background: #516eff;
+    min-height: 56px;
+    padding: 16px 40px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .appointment-button:hover, .appointment-button:focus {
+    background-color: #4055cc;
+    outline: none;
+  }
+  @media (max-width: 991px) {
+    .header-container {
+      padding: 0 20px;
+    }
+    .navigation-wrapper {
+      max-width: 100%;
+    }
+    .brand-container {
+      white-space: initial;
+    }
+    .navigation-content {
+      max-width: 100%;
+    }
+    .appointment-button {
+      padding: 16px 20px;
+    }
+  }

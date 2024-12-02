@@ -1,0 +1,162 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    background: var(--Primary, #516eff);
+    gap: 40px 61px;
+    flex-wrap: wrap;
+    padding: 104px 108px 96px;
+    width: 100%;
+
+  }
+
+  .brand-section {
+    display: flex;
+    min-width: 240px;
+    flex-direction: column;
+    width: 264px;
+  }
+
+  .brand-logo {
+    display: flex;
+    width: 176px;
+    align-items: center;
+    gap: 13px;
+  }
+
+  .logo-image {
+    width: 39px;
+    height: 39px;
+    object-fit: contain;
+  }
+
+  .brand-name {
+    font: 500 34px Ubuntu, sans-serif;
+    margin: 0;
+  }
+
+  .brand-description {
+    margin: 40px 0 0;
+    font: 400 16px/34px Inter, sans-serif;
+    letter-spacing: 0.64px;
+  }
+
+  .footer-divider {
+    width: 0;
+    height: 244px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 0;
+  }
+
+  .hours-section {
+    display: flex;
+    flex-direction: column;
+    font-family: Inter, sans-serif;
+    width: 222px;
+  }
+
+  .section-title {
+    font: 400 14px/1 Inter, sans-serif;
+    margin: 0;
+    padding: 8px 0;
+  }
+
+  .hours-content {
+    margin-top: 32px;
+  }
+
+  .visit-title {
+    font: 600 28px/40px Inter, sans-serif;
+    margin: 0;
+  }
+
+  .schedule {
+    margin-top: 40px;
+    font: 400 16px Inter, sans-serif;
+  }
+
+  .schedule-hours {
+    margin-top: 8px;
+  }
+
+  .links-section {
+    min-width: 240px;
+    font-family: Inter, sans-serif;
+  }
+
+  .links-container {
+    display: flex;
+    margin-top: 40px;
+    gap: 20px;
+  }
+
+  .social-links,
+  .site-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 112px;
+  }
+
+  .footer-link {
+    color: inherit;
+    text-decoration: none;
+    font: 400 16px Inter, sans-serif;
+    display: block;
+    margin-top: 16px;
+  }
+
+  .footer-link:first-child {
+    margin-top: 0;
+  }
+
+  .contact-section {
+    width: 200px;
+    font-family: Inter, sans-serif;
+  }
+
+  .email-link {
+    color: inherit;
+    text-decoration: none;
+    font: 400 16px Inter, sans-serif;
+    display: block;
+    margin-top: 40px;
+  }
+
+  .address-container {
+    margin-top: 32px;
+  }
+
+  .address-text {
+    font: 400 16px/24px Inter, sans-serif;
+    margin-top: 8px;
+    font-style: normal;
+  }
+
+  @media (max-width: 991px) {
+    .footer {
+      padding: 100px 20px 0;
+    }
+  }
+
+
+
+  :host {
+    display: contents;
+  }
+  .footer-copyright {
+    width: 100%;
+    background: rgba(33, 101, 131, 1);
+    text-align: center;
+    padding: 20px 192px;
+  }
+  .copyright-text {
+    margin: 0;
+    font: 400 16px Inter, sans-serif;
+    color: #fff;
+  }
+  @media (max-width: 991px) {
+    .footer-copyright {
+      padding: 20px;
+    }
+  }

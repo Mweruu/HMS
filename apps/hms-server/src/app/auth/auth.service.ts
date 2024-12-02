@@ -15,14 +15,12 @@ async signIn(
     email: string,
     pass: string,
   ): Promise<{ access_token: string }> {
-    console.log(email, pass)
     const user = await this.usersService.findOneEmail(email);
     if (!user || user?.password !== pass) {
       throw new UnauthorizedException();
     }
     this.logger.log(user);
     const payload = { sub: user.id, username: user.name };
-    console.log(user, payload);
     return {
       access_token: await this.jwtService.signAsync(payload),
     };

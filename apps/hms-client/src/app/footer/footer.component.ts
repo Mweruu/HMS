@@ -9,21 +9,21 @@ import { MenuItem } from 'primeng/api';
 export class FooterComponent {
   items: MenuItem[] | undefined;
 
-    ngOnInit() {
-        this.items = [
-            {
-                label: 'Home',
-                icon: 'pi pi-home'
-            },
-            {
-                label: 'Features',
-                icon: 'pi pi-star'
-            },
-            {
-                label: 'Contact',
-                icon: 'pi pi-envelope'
-            }
-        ]
-    }
+    // ngOnInit() {
+    //     this.items = [
+    //         {
+    //             label: 'Home',
+    //             icon: 'pi pi-home'
+    //         },
+    //         {
+    //             label: 'Features',
+    //             icon: 'pi pi-star'
+    //         },
+    //         {
+    //             label: 'Contact',
+    //             icon: 'pi pi-envelope'
+    //         }
+    //     ]
+    // }
 
 }
