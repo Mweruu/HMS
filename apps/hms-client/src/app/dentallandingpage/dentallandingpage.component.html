@@ -12,7 +12,7 @@
       </header>
       <nav class="action-buttons">
         <button class="primary-button" tabindex="0">Get Started</button>
-        <button class="secondary-button" tabindex="0">Learn More</button>
+        <button class="secondary-button" tabindex="0" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'});">Learn More</button>
       </nav>
     </article>
     <img
@@ -48,7 +48,7 @@
     </div>
 </section>
 
-<section class="hero-section">
+<section class="hero-section" id="services">
     <header class="header-container">
         <section class="header-content">
             Always
@@ -192,14 +192,6 @@
           </article>
         </div>
       </div>
-
-      <!-- <div class="background-decoration">
-        <div class="horizontal-line"></div>
-        <div class="vertical-lines">
-          <span class="vertical-line"></span>
-          <span class="vertical-line"></span>
-        </div>
-      </div> -->
     </main>
 </section>
 
@@ -218,12 +210,12 @@
         designed to meet the needs of you & your entire family.
       </p>
     </article>
-    <button class="appointment-button" tabindex="0" aria-label="Make An Appointment">
+    <button class="appointment-button1" tabindex="0" aria-label="Make An Appointment" onclick="document.getElementById('appointment').scrollIntoView({behavior: 'smooth'});">
       Make An Appointment
     </button>
 </section>
 
-<section class="who-we-are-section">
+<section class="who-we-are-section" id="about">
     <header class="section-header">
       <div class="title-container">
         <h1 class="main-title">
@@ -290,18 +282,18 @@
 
       <section class="doctors-grid">
         <article class="doctor-card" *ngFor="let doctor of doctors">
-          <img
+          <!-- <img
             [src]="doctor.imageUrl"
             [alt]="'Portrait of ' + doctor.name"
             class="doctor-image"
             loading="lazy"
-          />
+          /> -->
           <div class="doctor-info">
             <div class="doctor-details">
               <h3 class="doctor-name">{{ doctor.name }}</h3>
               <div class="doctor-credentials">
-                <p>{{ doctor.specialty }}</p>
-                <p>{{ doctor.school }}</p>
+                <!-- <p>{{ doctor.specialty }}</p>
+                <p>{{ doctor.school }}</p> -->
               </div>
             </div>
             <button class="appointment-button" tabindex="0">
@@ -322,7 +314,7 @@
     </main>
 </section>
 
-<main class="appointment-container">
+<main class="appointment-container"  id="appointment">
     <header class="appointment-header">
       <section class="appt-header-content">
         <h1 class="title">
@@ -346,111 +338,62 @@
         class="doctor-image"
       />
 
-      <form [formGroup]="appointmentForm" class="appointment-form" (ngSubmit)="onSubmit()">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fullName" class="form-label">Name</label>
-            <input
-              id="fullName"
+      <form [formGroup]="apptForm" class="appointment-form" (ngSubmit)="onSubmit()">
+        <div class="formgrid grid">
+          <div class="field col-12 md:col-6">
+            <label for="firstname2">Name</label>
+            <input type="text" pInputText formControlName="patient" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            <small *ngIf="appointmentForm['patient'].invalid && isSubmitted" class="p-error">Patient is required</small>
+          </div>
+          <div class="field col-12 md:col-6">
+            <label for="phone">Phone</label>
+            <input id="phone" type="number" formControlName="phone" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            <small *ngIf="appointmentForm['phone'].invalid && isSubmitted" class="p-error">Phonenumber is required</small>
+          </div>
+          <div class="field col-12 md:col-6">
+            <label for="date">Date</label>
+            <div>
+              <p-calendar formControlName="date" />
+            </div>
+            <small *ngIf="appointmentForm['date'].invalid && isSubmitted" class="p-error">Date is required</small>
+          </div>
+          <div class="field col-12 md:col-6">
+            <label for="lastname2">Doctor</label>
+            <div>
+              <p-dropdown formControlName="doctor" [options]="doctors" optionLabel="name" optionValue="id" [filter]="true" filterBy="id" [showClear]="true" placeholder="Select a Doctor"></p-dropdown>
+            </div>
+            <small *ngIf="appointmentForm['doctor'].invalid && isSubmitted" class="p-error">Doctor is required</small>
+          </div>
+          <div class="field col-12 md:col-12">
+              <label for="message">Message</label>
+              <textarea              
+              rows="5" 
+              cols="30" 
+              pInputTextarea 
+              formControlName="message"
+              placeholder="Include a message..."
+              id="message" 
               type="text"
-              formControlName="fullName"
-              class="form-input"
-              placeholder="Full name"
-              aria-label="Full name"
-            />
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"></textarea>      
           </div>
-
-          <div class="form-group">
-            <label for="phone" class="form-label">Phone</label>
-            <div class="phone-input-container">
-              <div class="country-code">
-                <span class="code-text">+01</span>
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/44d76ba14bcc6ce1f2832718fb61ec13e471ed7385896a2c6006df522433871d?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
-                  alt=""
-                  class="dropdown-icon"
-                />
-              </div>
-              <input
-                id="phone"
-                type="tel"
-                formControlName="phone"
-                class="form-input"
-                placeholder="(555) 000-0000"
-                aria-label="Phone number"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="date" class="form-label">Date</label>
-            <div class="date-input-container">
-              <input
-                id="date"
-                type="date"
-                formControlName="date"
-                class="form-input"
-                aria-label="Appointment date"
-              />
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/6054dc78880237f703d711c9bee9440963d15cfe1e32d1872f6880436e6bdd66?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
-                alt=""
-                class="calendar-icon"
-              />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="doctor" class="form-label">Doctor</label>
-            <div class="doctor-select-container">
-              <select
-                id="doctor"
-                formControlName="doctor"
-                class="form-input"
-                aria-label="Select doctor"
-              >
-                <option value="Dr. Pritis Barua">Dr. Pritis Barua</option>
-              </select>
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/efc12b64d194857a3340bbe2a42f80d4beb5e00e39a00d0744fa356ef8dfe32d?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
-                alt=""
-                class="dropdown-icon"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="message" class="form-label">Message</label>
-          <textarea
-            id="message"
-            formControlName="message"
-            class="form-textarea"
-            placeholder="Include a message..."
-            aria-label="Message"
-          ></textarea>
-        </div>
-
-        <div class="form-footer">
-          <div class="privacy-section">
-            <input
-              type="checkbox"
-              id="privacyPolicy"
-              formControlName="privacyAccepted"
-              class="privacy-checkbox"
-              aria-label="Accept privacy policy"
-            />
+          <div class="field col-12 md:col-12">
+             <p-checkbox 
+              [binary]="true" 
+              inputId="binary" />
+            <!-- <p-checkbox 
+            [(ngModel)]="checked" 
+            [binary]="true" 
+            inputId="binary" /> -->
             <label for="privacyPolicy" class="privacy-label">
               You agree to our friendly
               <span class="privacy-link">privacy policy.</span>
             </label>
           </div>
-
-          <button type="submit" class="submit-button">
-            Confirm Appointment
-          </button>
+        </div>
+        <div class="form-footer">
+          <p-button 
+          label="Confirm Appointment" 
+          (onClick)="onSubmit()" />
         </div>
       </form>
     </section>
@@ -467,7 +410,7 @@
         />
       </figure>
       
-      <form [formGroup]="subscribeForm" (ngSubmit)="onSubmit()" class="subscription-form">
+      <form [formGroup]="sForm" (ngSubmit)="onSubscribe()" class="subscription-form">
         <h2 class="form-title">Subscribe to our newsletter</h2>
         <div class="form-inputs">
           <div class="input-group">

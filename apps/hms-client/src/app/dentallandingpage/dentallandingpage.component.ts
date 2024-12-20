@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-
-
-interface ServiceStep {
-  imageSrc: string;
-  imageAlt: string;
-  title: string;
-}
+import { DentallandingpageService } from './dentallandingpage.service';
+import { Patient } from './patient';
+import { Appointment } from './appointment';
+import { User } from './user';
+import { ActivatedRoute, Router } from '@angular/router';
+import { timer } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 interface FeatureItem {
   imgSrc: string;
@@ -16,46 +15,10 @@ interface FeatureItem {
   description: string;
 }
 
-interface Doctor {
-  name: string;
-  specialty: string;
-  school: string;
-  imageUrl: string;
-}
-
-export interface AppointmentFormData {
-  fullName: string;
-  phone: string;
-  date: string;
-  doctor: string;
-  message: string;
-  privacyAccepted: boolean;
-}
-
-export interface NewsletterFormData {
-  firstName: string;
-  email: string;
-}
-
-interface SubscriptionForm {
-  firstName: string;
-  email: string;
-}
-
-interface AppointmentForm {
-  fullName: string;
-  phone: string;
-  date: string;
-  doctor: string;
-  message: string;
-  privacyPolicy: boolean;
-}
-
-interface DoctorProfile {
-  name: string;
-  specialty: string;
-  school: string;
-  imageUrl: string;
+interface ServiceStep {
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
 }
 
 @Component({
@@ -64,48 +27,14 @@ interface DoctorProfile {
   styleUrl: './dentallandingpage.component.css',
 })
 export class DentallandingpageComponent {
-  doctors: Doctor[] = [
-    {
-      name: "Dr. Jeanette Hoff",
-      specialty: "Orthodontic Treatment",
-      school: "Yale Medical School",
-      imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/a9df48fa3ed7642253e6eb571be9196ba2b75784ed076a61bca690306afa28af?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
-    },
-    {
-      name: "Dr. David Ambrose",
-      specialty: "Orthodontic Treatment", 
-      school: "Harvard Medical School",
-      imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/d690003fc77044cb58c6b4e3ad2350123c648522b1fc66ad9b3bd11e9d573130?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
-    },
-    {
-      name: "Dr. Jenelia Breton",
-      specialty: "Orthodontic Treatment",
-      school: "Oxford Medical School",
-      imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/3987f114bfd3b6d3b352f8e4f5608e759393c1c8363251e9774eca5ddb0b341e?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
-    },
-    {
-      name: "Dr. Jagajeet Aurora",
-      specialty: "Orthodontic Treatment",
-      school: "Harvard Medical School",
-      imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/2f6280b2485602f89ed7abc1493d51782caa0c49ad75a3f7bb2d1afcbb163838?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930"
-    }
-  ];serviceSteps: ServiceStep[] = [
-    {
-      imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/ff93d459df0d7cce72f65be5f3b1bba27efbaf8778fb04f14380f9482bd51e8b?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930",
-      imageAlt: "Phone icon representing appointment booking",
-      title: "Call for\nappointment"
-    },
-    {
-      imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/eadf2127868ff2401aa07b83e9ba90a7ef2ef9b4ca91c47d1442495c34c8b4fe?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930",
-      imageAlt: "Calendar icon representing date selection",
-      title: "Get a\nDate & Serial"
-    },
-    {
-      imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/fef9ed9964d5a33d79bb16197d82f7b0336a613065aaa9d0cf705e15f83dcfa8?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930",
-      imageAlt: "Dentist consultation icon",
-      title: "Consult\nYour dentist"
-    }
-  ];
+  sForm!: FormGroup;
+  pForm!: FormGroup;
+  apptForm!: FormGroup;
+  patientId:string | any;
+  doctors: User[] | undefined;
+  currentId!:string;
+  isSubmitted = false;
+  editMode = false;
 
   topFeatures: FeatureItem[] = [
     {
@@ -149,66 +78,190 @@ export class DentallandingpageComponent {
     }
   ];
 
-  subscriptionForm = new FormGroup({
-    firstName: new FormControl(''),
-    email: new FormControl(''),
-  });
-
-  // appointmentForm = new FormGroup({
-  //   fullName: new FormControl(''),
-  //   phone: new FormControl(''),
-  //   date: new FormControl(''),
-  //   doctor: new FormControl(''),
-  //   message: new FormControl(''),
-  //   privacyPolicy: new FormControl(false),
-  // });
-
-  onSubscribeSubmit() {
-    if (this.subscriptionForm.valid) {
-      console.log(this.subscriptionForm.value);
+  serviceSteps: ServiceStep[] = [
+    {
+      imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/ff93d459df0d7cce72f65be5f3b1bba27efbaf8778fb04f14380f9482bd51e8b?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930",
+      imageAlt: "Phone icon representing appointment booking",
+      title: "Call for\nappointment"
+    },
+    {
+      imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/eadf2127868ff2401aa07b83e9ba90a7ef2ef9b4ca91c47d1442495c34c8b4fe?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930",
+      imageAlt: "Calendar icon representing date selection",
+      title: "Get a\nDate & Serial"
+    },
+    {
+      imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/fef9ed9964d5a33d79bb16197d82f7b0336a613065aaa9d0cf705e15f83dcfa8?placeholderIfAbsent=true&apiKey=d08c537fa1474c3f998c9c04b4302930",
+      imageAlt: "Dentist consultation icon",
+      title: "Consult\nYour dentist"
     }
+  ];
+
+
+  constructor(private fb: FormBuilder,
+              private landingpageService:DentallandingpageService,
+              private messageService: MessageService,
+              private router:Router,
+              private activatedRoute:ActivatedRoute
+            ){
+    
+   
   }
 
-  onAppointmentSubmit() {
-    if (this.appointmentForm.valid) {
-      console.log(this.appointmentForm.value);
-    }
-  }
-
-  appointmentForm: FormGroup;
-
-  constructor(private fb: FormBuilder) {
-    this.appointmentForm = this.fb.group({
-      fullName: ['', Validators.required],
-      phone: ['', Validators.required],
-      date: ['', Validators.required],
-      doctor: ['Dr. Pritis Barua', Validators.required],
-      message: [''],
-      privacyAccepted: [false, Validators.requiredTrue]
-    });
-
-    this.subscribeForm = this.fb.group({
+  ngOnInit(): void {
+    this.sForm = this.fb.group({
       firstName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
     });
+
+    this.pForm = this.fb.group({
+      name: ['', Validators.required],
+      address: ['', Validators.required],
+      gender: ['Female', Validators.required],
+      dob: ['', Validators.required],
+
+    });
+
+    this.apptForm = this.fb.group({
+      patient: [this.patientId, Validators.required],
+      phone: ['', Validators.required],
+      date: ['', Validators.required],
+      doctor: ['', Validators.required],
+      message: [''],
+    });
+
+    this._checkEditMode()
+    this.getDoctors()
   }
 
-  onSubmit(): void {
-    if (this.appointmentForm.valid) {
-      const formData: AppointmentFormData = this.appointmentForm.value;
-      console.log(formData);
+  private _checkEditMode(){
+    this.activatedRoute.params.subscribe((params) =>{
+      if(params['id']){
+        this.editMode = true
+        this.currentId = params['id']
+        // this.landingpageService.get(this.currentId).subscribe(x =>{
+        //     this.xf['name'].setValue(x.name),
+        //     this.xf['icon'].setValue(x.icon)
+        //     this.xf['color'].setValue(x.color)
+        // })
+      }
+    })
+  }
+
+
+  onSubmit(){
+    console.log("submit", this.apptForm.invalid, this.appointmentForm['phone'].value)
+    this.isSubmitted = true
+    if(this.apptForm.invalid){
+      return;
+    }
+    const appointmentData = {
+      id: this.currentId,
+      patient: this.appointmentForm['patient'].value,
+      phone: this.appointmentForm['phone'].value,
+      doctor: this.appointmentForm['doctor'].value,
+      message: this.appointmentForm['message'].value,
+      date: this.appointmentForm['date'].value,
+
+    }
+
+    const patientData = {
+      name: this.appointmentForm['patient'].value,
+      address: this.appointmentForm['phone'].value,
+      gender: 'Male',
+      dob: this.appointmentForm['date'].value,
+    }
+    if(this.editMode){
+      this._updateAppointment(appointmentData)
+    }else{
+      this.createPatient(patientData).then((patient) => {
+        const appt: Appointment = { ...appointmentData, patient: patient.id };
+        this._createAppointment(appt);
+      });
     }
   }
+  
+  _createAppointment(appointment:Appointment){
+    this.landingpageService.createAppointement(appointment).subscribe(
+      appointment =>{
+        this.messageService.add({
+          severity:'success',
+          summary:`Appointemnt  successfully created`,
+        })
 
-  subscribeForm: FormGroup;
+        timer(3500).toPromise().then(()=>{
+          this.router.navigate(['/'])
+        })
 
-  ngOnInit(): void {}
+        // timer(2000).toPromise().then((done)=>{
+        //   this.location.back()
+        // })
 
-  onSubmity(): void {
-    if (this.subscribeForm.valid) {
-      const formData: NewsletterFormData = this.subscribeForm.value;
-      console.log(formData);
-    }
+        },error=>{
+          console.error("Failed to create Appointment",error)
+          this.messageService.add({
+            severity:'error',
+            summary:'Failed to create Appointment'})
+        }
+    )
   }
 
+  _updateAppointment(appointment:Appointment){
+    this.landingpageService.updateAppointment(this.currentId,appointment).subscribe(appointment=>{
+      this.messageService.add({
+        severity:'success',
+        summary:`Appointment successfully updated`,
+        });
+
+    timer(3500).toPromise().then(()=>{
+      this.router.navigate(['/'])
+    })
+
+    },error=>{
+      console.error("Failed to update Appointment",error)
+      this.messageService.add({
+        severity:'error',
+        summary:'Failed to update Appointment'})
+    }
+    )
+  }
+
+  createPatient(patient:Patient): Promise<Patient>{
+    return new Promise((resolve, reject) => {
+      this.landingpageService.createPatient(patient).subscribe({
+        next: (createdPatient) => {
+          this.patientId = createdPatient.id;
+          resolve(createdPatient); // Resolve the promise with the created patient
+        },
+        error: (err) => reject(err), // Reject the promise in case of an error
+      });
+    });
+  }
+
+  onSubscribe(){
+    console.log("subscribe")
+    if (this.sForm.invalid) {
+      return;
+    }
+    this.subscribeForm['firstName'].value
+    this.subscribeForm['email'].value
+  }
+
+  getDoctors(){
+    this.landingpageService.getUsers().subscribe(doctors =>{
+      console.log(doctors)
+      this.doctors =  doctors
+    })
+  }
+
+  get patientForm(){
+    return this.pForm.controls
+  }
+
+  get subscribeForm(){
+    return this.sForm.controls
+  }
+
+  get appointmentForm(){
+    return this.apptForm.controls
+  }
 }

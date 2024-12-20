@@ -13,7 +13,7 @@ export class CreatePatientDto {
     @ApiProperty({
         example: '1999-12-25',
     })
-    @IsEmail()
+    @IsNotEmpty()
     dob: Date;
 
     @ApiProperty({
@@ -22,11 +22,13 @@ export class CreatePatientDto {
     @IsEnum(Gender, {
         message: 'Valid Gender required',
     })
+    @IsNotEmpty()
     gender: Gender;
 
     @ApiProperty({
-        example: 'Karatina',
+        example: '0710998834',
     })
     @IsAlphanumeric()
+    @IsNotEmpty()
     address: string;
 }

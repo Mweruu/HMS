@@ -125,6 +125,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 40px 172px;
+  width: 100%;
 }
 
 .service-content {
@@ -381,19 +382,18 @@
 
 .features-section {
   display: flex;
-  width: 100%;
   flex-direction: column;
   padding: 128px 108px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
 }
 
 .features-header {
-  gap: -236px;
+  /* gap: -236px; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* color: var(--White-Primary, #fff); */
   display: flex;
-  flex-direction: column;
-  color: var(--White-Primary, #fff);
+  align-items: flex-end;
+  gap: -180px;
 }
 
 .main-title {
@@ -529,6 +529,7 @@
 
 @media (max-width: 991px) {
   .features-section {
+    max-width: 100%;
     padding: 100px 20px;
   }
   .features-header {
@@ -625,9 +626,8 @@
 .appointment-button {
   width: 384px;
   border-radius: 16px;
-  border: 2px solid var(--White-Primary, #fff);
   background: transparent;
-  color: var(--White-Primary, #fff);
+  color: var(--White-Primary, #050505);
   margin-top: 56px;
   max-width: 100%;
   font-size: 20px;
@@ -673,12 +673,12 @@
 
 .team-section {
   background: #f8fafc;
-  padding: 128px 108px 144px;
+  padding: 128px 108px;
   display: flex;
   flex-direction: column;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start; */
 }
 
 .team-header {
@@ -690,6 +690,10 @@
 .title-container {
   width: 446px;
   font: 600 48px/64px Inter, sans-serif;
+  display: flex;
+  min-width: 240px;
+  flex-direction: column;
+  width: 1030px;
 }
 
 .main-title {
@@ -808,12 +812,12 @@
   color: #777;
 }
 
-.appointment-button {
+.appointment-button1 {
   margin-top: 32px;
   padding: 12px 40px;
   border-radius: 8px;
-  border: 1.5px solid #516eff;
-  color: #516eff;
+  border: 1.5px solid #eceef5;
+  color: #e8ebfa;
   background: transparent;
   font-size: 16px;
   cursor: pointer;
@@ -821,6 +825,7 @@
 
 @media (max-width: 991px) {
   .team-section {
+    max-width: 100%;
     padding: 100px 20px;
   }
 
@@ -857,7 +862,7 @@
     flex-wrap: wrap;
   }
 
-  .appointment-button {
+  .appointment-button1 {
     padding: 12px 20px;
   }
 }
@@ -957,7 +962,6 @@
   .section-header {
     flex-direction: column;
     flex-wrap: wrap;
-    /* padding: 0 20px 100px; */
     max-width: 100%;
   }
   .title-container {
@@ -988,7 +992,9 @@
 }
 
 .appointment-container {
-  padding: 120px 108px;
+  display: flex;
+  flex-direction: column;
+  padding: 128px 108px;
 }
 
 .appointment-header {
@@ -1156,8 +1162,9 @@
 
 @media (max-width: 991px) {
   .appointment-container {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+    max-width: 100%;
     padding: 100px 20px;
   }
   .appointment-header,
@@ -1176,8 +1183,15 @@
   }
 
   .title {
-    font-size: 40px;
+    font-size: 20px;
   }
+
+  .highlight-text {
+    color: #ffd700;
+    font-size: 40px;
+
+  }
+  
 
   .subtitle {
     font-size: 40px;
@@ -1205,20 +1219,34 @@
 }
 
 .newsletter-section {
-  background: #f8fafc;
   padding: 96px 108px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  background-color: rgb(33, 101, 131);
+  justify-content: flex-start;
+  gap: 40px 172px;
+  height: 330px;
+  width: 80%;
+  margin-bottom: 50px;
+  border-radius: 20px;
 }
 
 .newsletter-container {
-  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 40px 172px;
+  flex-wrap: wrap;
+  margin: auto 0;
+  min-width: 240px;
+  align-self: stretch;
+
+  /* border-radius: 20px;
   background-color: rgb(33, 101, 131);
   display: flex;
   align-items: center;
   gap: 70px;
   justify-content: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
 }
 
 .left-illustration {
@@ -1309,6 +1337,8 @@
 
 @media (max-width: 991px) {
   .newsletter-section {
+    height: 100%;
+    width: 100%;
     padding: 0 20px;
   }
 
